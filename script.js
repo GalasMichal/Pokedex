@@ -3,33 +3,38 @@ let allFetchedPokemon = [];
 
 let currentPokemonToFetch = 20;
 let loadedPokemonCount = 20;
+async function init(){
+  await loadAllPokemonData();
+  renderAllPokemon();
+}
 
-
-async function loadSpecificPokemondata() {
-  for (let i = 1; i < currentPokemonToFetch; i++) {
-
-
+async function loadAllPokemonData() {
+  for (let i = 1; i <= 1292; i++) {
     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
     let response = await fetch(url);
     let responseAsJson = await response.json();
     allFetchedPokemon.push(responseAsJson);
-
   }
   renderAllPokemon();
 }
+
+
+
+
+  
+
 
 function renderAllPokemon() {
   let renderAll = document.getElementById('PokeRenderContainer');
   renderAll.innerHTML = '';
 
-  for (let i = 0; i < allFetchedPokemon.length; i++) {
+  for (let i = 0; i < loadedPokemonCount; i++) {
     const ThisPokemon = allFetchedPokemon[i];
     renderAll.innerHTML += miniCardHtml(ThisPokemon, i);
     renderTypes(ThisPokemon, i);
-
   }
-
 }
+
 
 function showDetailCard(i) {
   let detail = document.getElementById('PokemonDetail');
@@ -44,7 +49,7 @@ function showDetailCard(i) {
 
 async function loadMorePokemons() {
 
-  if (loadedPokemonCount >= 1292) {
+  if (loadedPokemonCount >= 1017) {
     alert("Du hast bereits alle verfügbaren Pokemon geladen!");
     return;
   }
@@ -100,4 +105,18 @@ function searchName() {
     }
   }
 }
+
+
+
+// function renderPokemonCard() {
+
+// }
+
+
+// function renderPokemonInfo() {
+//   document.getElementById("pokemonName").innerHTML =
+//     currentPokemon["name"];
+//   document.getElementById("PokemonImg").src =
+//     currentPokemon.sprites.other.home.front_default;
+// }
 
