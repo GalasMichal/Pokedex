@@ -3,25 +3,26 @@ let allFetchedPokemon = [];
 
 let currentPokemonToFetch = 20;
 let loadedPokemonCount = 20;
-async function init(){
-  await loadAllPokemonData();
-  renderAllPokemon();
-}
+
 
 async function loadAllPokemonData() {
-  for (let i = 1; i <= 1292; i++) {
+  
+  for (let i = 1; i <= 30; i++) {
     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
     let response = await fetch(url);
     let responseAsJson = await response.json();
     allFetchedPokemon.push(responseAsJson);
   }
   renderAllPokemon();
-}
-
-
-
-
+  for (let i = 31; i <= 1017; i++) {
+    let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+    let response = await fetch(url);
+    let responseAsJson = await response.json();
+    allFetchedPokemon.push(responseAsJson);
+  }
+  renderAllPokemon();
   
+}
 
 
 function renderAllPokemon() {
@@ -33,6 +34,7 @@ function renderAllPokemon() {
     renderAll.innerHTML += miniCardHtml(ThisPokemon, i);
     renderTypes(ThisPokemon, i);
   }
+  
 }
 
 
@@ -95,28 +97,21 @@ function BgColoursDetailCard(ThisPokemon, i) {
 
 function searchName() {
   let search = document.getElementById('InputHeader').value.toLowerCase();
+  let leerInput = document.getElementById('InputHeader').value
   let renderSearch = document.getElementById('PokeRenderContainer');
   renderSearch.innerHTML = '';
-
+  if(leerInput === ''){
+    renderAllPokemon();
+  }
+  else {
   for (let i = 0; i < allFetchedPokemon.length; i++) {
     const name = allFetchedPokemon[i].name.toLowerCase();
     if (name.includes(search)) {
-      renderSearch.innerHTML += miniCardHtml(allFetchedPokemon[i], i);
+      let ThisPokemon = allFetchedPokemon[i]
+      renderSearch.innerHTML += miniCardHtml(allFetchedPokemon[i], i); renderTypes(ThisPokemon, i);;
     }
-  }
+  }}
 }
 
 
-
-// function renderPokemonCard() {
-
-// }
-
-
-// function renderPokemonInfo() {
-//   document.getElementById("pokemonName").innerHTML =
-//     currentPokemon["name"];
-//   document.getElementById("PokemonImg").src =
-//     currentPokemon.sprites.other.home.front_default;
-// }
 

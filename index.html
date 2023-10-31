@@ -20,7 +20,7 @@
     <script src="script.js"></script>
     <script src="html.js"></script>
   </head>
-  <body onload="init()">
+  <body onload="loadAllPokemonData()">
     <div class="Pokemon" id="Pokemon">
       <header>
         <div class="PokeLogo">
@@ -31,7 +31,7 @@
             type="text"
             name=""
             id="InputHeader"
-            onkeydown="searchName()"
+            onkeyup="searchName()"
             placeholder="Catch'em if you can!"
           />
         </div>
