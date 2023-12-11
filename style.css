@@ -29,6 +29,10 @@ body {
     align-items: center;
 }
 
+.close-Poke:hover {
+    scale: 1.1;
+}
+
 .PokeCardContainer {
     width: 30rem;
     position: relative;
@@ -59,6 +63,7 @@ body {
     width: 100%;
     text-transform: capitalize;
     margin-top: 0;
+    text-align: center;
 }
 
 .InfoContainer {
@@ -131,16 +136,14 @@ body {
     width: 130px;
 }
 
-/*  Allgemiene ansicht*/
+.d-none{
+    display: none;
+}
+
+/*  Allgemeine ansicht*/
 
 .Pokemon {
     width: 100%;
-
-    /* background-image: url(img/pokeBG.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -318,4 +321,81 @@ h1 {
 .fairy {
     background-color: #EE99AC;
     border-color: #9B6470;
+}
+
+@media (max-width: 620px) {
+    
+    .PokeLogo {
+        width: 26rem;
+    }
+
+    .PokeCardContainer{
+        width: 21rem;
+        height: 543px;
+        margin-top: -260px;
+    }
+
+    .InfoContainer {
+        min-height: 402;
+    }
+
+    .pokeCard {
+        min-height: 303px; 
+    }
+
+    #PokemonImg { 
+        width: 172px;
+        z-index: 10;
+        margin-left: 86px;
+    }
+
+    .pokemonName {
+        font-size: 37px;
+    }
+
+    .headerPokeCard {
+        margin-top: -160px;
+    }
+
+    .width-10 {
+        width: 93px;
+    }
+}
+
+@media (max-width: 450px){
+
+    .PokeLogo {
+        width: 14rem;
+    }
+
+    .InputHeaderContainer {
+        width: 236px;
+    }
+
+    .PokeCardContainer{
+        width: 21rem;
+        height: 637px;
+        margin-top: 0;
+    }
+
+    .Infonavbar{
+        margin-bottom: 0;
+        padding-top: 27px;
+    }
+
+    .pokemonName{
+        font-size: 27px;
+    }
+
+    #PokemonImg{
+        width: 142px;
+    }
+
+    .pokeCard{
+        min-height: 251px;
+    }
+
+    .InfoContainer{
+        min-height: 399px;
+    }
 }
