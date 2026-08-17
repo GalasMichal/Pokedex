@@ -1,13 +1,11 @@
 
 let allFetchedPokemon = [];
-let favourites = [];
-
 let currentPokemonToFetch = 20;
 let loadedPokemonCount = 20;
 
 
 async function loadAllPokemonData() {
-  loadFav();
+  
   for (let i = 1; i <= 20; i++) {
     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
     let response = await fetch(url);
@@ -52,29 +50,9 @@ function showDetailCard(i) {
 
 }
 
-function toggleFavorite(i) {
-  let ThisPokemon = allFetchedPokemon[i];
-  let isFavorite = false;
-  const heart = document.getElementById(`heart${i}`);
-  isFavorite = !isFavorite; // Umkehrung des Status
-  
-  // Wenn das Pokemon bereits favorisiert ist
-  if (isFavorite) {
-    favourites.push(ThisPokemon); // Hinzufügen zum Favoriten-Array
-    heart.src = './img/icons/heartR.png'  // Ändert die Farbe des Herzens auf Rot
-  } else {
-    favourites = favourites.filter(pokemon => pokemon !== ThisPokemon); // Entfernt das Pokemon aus den Favoriten
-    heart.src = './img/icons/heart.png'; // Setzt die Herzfarbe zurück
-  }
-  localStorage.setItem('fav', 'favourites');
-  
-  // Hier kannst du mit dem "favourites"-Array weiterarbeiten oder es rendern
-  console.log(favourites); // Zeigt das aktuelle "favourites"-Array in der Konsole an (kann für das Rendering verwendet werden)
-}
 
-function loadFav(){
-  localStorage.getItem('fav');
-}
+
+
 
 async function loadMorePokemons() {
 
@@ -82,7 +60,6 @@ async function loadMorePokemons() {
     alert("Du hast bereits alle verfügbaren Pokemon geladen!");
     return;
   }
-
   // Aktualisiere das Laden-Ziel (um 20 erhöhen)
   loadedPokemonCount += 20;
 
